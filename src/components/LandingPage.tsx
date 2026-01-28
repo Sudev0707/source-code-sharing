@@ -27,8 +27,8 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-            Create, edit, and share code files with a beautiful VSCode-like editor. 
-            Support for 5+ languages with syntax highlighting and real-time collaboration.
+            Create, edit, and share code snippets with a beautiful VSCode-like editor.
+            Support for 20+ languages with syntax highlighting and real-time collaboration.
           </p>
 
           {/* CTA Buttons */}
@@ -160,12 +160,15 @@ developers.forEach(dev => {
       <div className="container mx-auto px-4 ">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-              Code that <span className="gradient-text">looks beautiful</span>
-            </h2>
-            <p className="text-muted-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+            Code that <span className="gradient-text">looks beautiful</span>
+          </h2>
+          <h3 className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
+            Syntax highlighting for 20+ languages. Just like your favorite editor.
+          </h3>
+            {/* <p className="text-muted-foreground">
               Syntax highlighting for 20+ languages. Just like your favorite editor.
-            </p>
+            </p> */}
           </div>
 
           {/* Code Preview */}
