@@ -48,7 +48,7 @@ const Navbar = () => {
           {/* Desktop Auth Buttons */}
           <div className=" md:flex items-center gap-2">
             <a
-              href="https://github.com/your-username"
+              href="https://github.com/Sudev0707/source-code-sharing/tree/main"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition"
