@@ -15,14 +15,7 @@ const Signup = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate signup
-    // setTimeout(() => {
-    //   setIsLoading(false);
-    //   toast({
-    //     title: "Signup functionality",
-    //     description: "Connect Lovable Cloud to enable authentication",
-    //   });
-    // }, 1000);
+   
   };
 
   return (
