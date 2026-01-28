@@ -9,7 +9,7 @@ An open platform for sharing source code files and code snippets. Create, edit, 
 - **Download & Export**: Download your code files in any format. Export entire projects as ZIP archives.
 - **Beautiful Previews**: Render HTML, Markdown, and more with live previews. Perfect for documentation.
 - **Secure Storage**: Your code is encrypted and stored securely. Control who can view and edit your files.
-- **Multi-Language Support**: Support for JavaScript, TypeScript, Python, Java, HTML, CSS, and 15+ more languages.
+- **Multi-Language Support**: Support for JavaScript, TypeScript, Python, Java, HTML, CSS, and so on.
 
 ## Tech Stack
 
