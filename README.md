@@ -1,6 +1,6 @@
 # SourceShare
 
-An open platform for sharing source code files and code snippets. Create, edit, and share code files with a beautiful VSCode-like editor. Support for 20+ languages with syntax highlighting and real-time collaboration.
+An open platform for sharing source code files and code snippets. Create, edit, and share code files with a beautiful VSCode-like editor. Support for 5+ languages with syntax highlighting and real-time collaboration.
 
 ## Features
 
