@@ -1,6 +1,6 @@
 # SourceShare
 
-An open platform for sharing source code files and code snippets. Create, edit, and share code files with a beautiful VSCode-like editor. Support for 20+ languages with syntax highlighting and real-time collaboration.
+An open platform for sharing source code files and code snippets. Create, edit, and share code files with a beautiful VSCode-like editor. Support for 5+ languages with syntax highlighting and real-time collaboration.
 
 ## Features
 
@@ -9,11 +9,11 @@ An open platform for sharing source code files and code snippets. Create, edit, 
 - **Download & Export**: Download your code files in any format. Export entire projects as ZIP archives.
 - **Beautiful Previews**: Render HTML, Markdown, and more with live previews. Perfect for documentation.
 - **Secure Storage**: Your code is encrypted and stored securely. Control who can view and edit your files.
-- **Multi-Language Support**: Support for JavaScript, TypeScript, Python, Java, HTML, CSS, and 15+ more languages.
+- **Multi-Language Support**: Support for JavaScript, TypeScript, Python, Java, HTML, CSS, and so on.
 
 ## Tech Stack
 
-- **Frontend**: React 18, TypeScript
+- **Frontend**: React, TypeScript
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS, Shadcn/ui components
 - **Routing**: React Router DOM
@@ -42,7 +42,6 @@ An open platform for sharing source code files and code snippets. Create, edit, 
    bun run dev
    ```
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Usage
 
@@ -50,7 +49,6 @@ An open platform for sharing source code files and code snippets. Create, edit, 
 - **Editor**: Navigate to `/editor` to create and edit code snippets.
 - **Dashboard**: View your shared code snippets at `/dashboard`.
 - **View Code**: Access shared code via `/view/:id`.
-- **Authentication**: Sign up at `/signup` or log in at `/login`.
 
 ## Scripts
 
