@@ -42,7 +42,6 @@ An open platform for sharing source code files and code snippets. Create, edit, 
    bun run dev
    ```
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Usage
 
