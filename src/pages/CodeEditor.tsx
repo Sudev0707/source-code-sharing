@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Editor from "@monaco-editor/react";
 import { Button } from "@/components/ui/button";
 import {
@@ -58,6 +58,20 @@ const CodeEditor = () => {
 
   const currentLang = languages.find((l) => l.id === language) || languages[1];
 
+  // Load code from URL params on mount
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const encodedCode = urlParams.get('code');
+    if (encodedCode) {
+      try {
+        const decodedCode = decodeURIComponent(escape(atob(encodedCode)));
+        setCode(decodedCode);
+      } catch (error) {
+        console.error('Failed to decode code from URL:', error);
+      }
+    }
+  }, []);
+
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(code);
     setCopied(true);
@@ -90,12 +104,23 @@ const CodeEditor = () => {
   }, [toast]);
 
   const handleShare = useCallback(() => {
-    navigator.clipboard.writeText(window.location.href);
-    toast({
-      title: "Link Copied!",
-      description: "Share link copied to clipboard",
-    });
-  }, [toast]);
+    try {
+      const encodedCode = btoa(unescape(encodeURIComponent(code)));
+      const shareUrl = `${window.location.origin}${window.location.pathname}?code=${encodeURIComponent(encodedCode)}`;
+      navigator.clipboard.writeText(shareUrl);
+      toast({
+        title: "Link Copied!",
+        description: "Share link copied to clipboard",
+      });
+    } catch (error) {
+      console.error('Failed to encode code for sharing:', error);
+      toast({
+        title: "Share Failed",
+        description: "Unable to share code due to encoding error",
+        variant: "destructive",
+      });
+    }
+  }, [code, toast]);
 
   return (
     <main className="pt-16 min-h-screen bg-background">
