@@ -13,7 +13,7 @@ An open platform for sharing source code files and code snippets. Create, edit, 
 
 ## Tech Stack
 
-- **Frontend**: React 18, TypeScript
+- **Frontend**: React, TypeScript
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS, Shadcn/ui components
 - **Routing**: React Router DOM
@@ -50,7 +50,6 @@ An open platform for sharing source code files and code snippets. Create, edit, 
 - **Editor**: Navigate to `/editor` to create and edit code snippets.
 - **Dashboard**: View your shared code snippets at `/dashboard`.
 - **View Code**: Access shared code via `/view/:id`.
-- **Authentication**: Sign up at `/signup` or log in at `/login`.
 
 ## Scripts
 
