@@ -339,7 +339,7 @@ const CodeEditor = () => {
       </div>
 
       {/* Editor */}
-      <div className="h-[calc(100vh-7.5rem)] px-1 pt-5 rounded-md pb-4">
+      <div className="h-[calc(100dvh-6rem)] px-1 pt-5 rounded-md pb-4 sm:h-[calc(100vh-7.5rem)]">
         <Editor
           height="100%"
           language={language}
