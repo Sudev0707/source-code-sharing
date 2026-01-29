@@ -188,7 +188,7 @@ const CodeEditor = () => {
             </div>
 
             {/* Right side */}
-            <div className="flex items-center gap-2 pe-5">
+            <div className="flex items-center gap-2 pe-3">
               {/* Desktop buttons */}
               <div className="hidden md:flex items-center gap-2">
                 <Button variant="ghost" size="sm" onClick={handleCopy}>
