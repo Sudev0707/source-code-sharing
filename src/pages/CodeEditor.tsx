@@ -130,7 +130,7 @@ const CodeEditor = () => {
     <main className="pt-16 min-h-screen bg-background">
       {/* Toolbar */}
       <div className="border-b border-border bg-card">
-        <div className="container mx-auto">
+        <div className=" mx-auto pl-4 pr-8 border">
           <div className="flex items-center justify-between h-14">
             {/* Left side */}
             <div className="flex items-center gap-4">
