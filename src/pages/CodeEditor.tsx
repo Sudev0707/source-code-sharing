@@ -204,11 +204,11 @@ const CodeEditor = () => {
                 <Button variant="ghost" size="sm" onClick={handleShare}>
                   <Share2 className="w-4 h-4" />
                 </Button>
-                <Button variant="hero" size="sm" onClick={handleSave}>
+                {/* <Button variant="hero" size="sm" onClick={handleSave}>
                   <Save className="w-4 h-4" />
                   Save
-                </Button>
-                <Button
+                </Button> */}
+                {/* <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsPublic(!isPublic)}
@@ -223,7 +223,7 @@ const CodeEditor = () => {
                       <Lock className="w-4 h-4 text-muted-foreground" /> Private
                     </>
                   )}
-                </Button>
+                </Button> */}
               </div>
 
               {/* Mobile: Language dropdown */}
@@ -271,7 +271,7 @@ const CodeEditor = () => {
                 {showMobileActionMenu && (
                   <div className="absolute right-0 top-full mt-2 w-56 p-2 rounded-lg glass border border-border shadow-card z-50 animate-scale-in">
                     {/* Visibility toggle */}
-                    <Button
+                    {/* <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => setIsPublic(!isPublic)}
@@ -287,7 +287,7 @@ const CodeEditor = () => {
                           Private
                         </>
                       )}
-                    </Button>
+                    </Button> */}
 
                     {/* Action buttons */}
                     <Button
@@ -322,14 +322,14 @@ const CodeEditor = () => {
                     >
                       <Share2 className="w-4 h-4" /> Share
                     </Button>
-                    <Button
+                    {/* <Button
                       variant="hero"
                       size="sm"
                       className="flex w-full justify-between"
                       onClick={handleSave}
                     >
                       <Save className="w-4 h-4" /> Save
-                    </Button>
+                    </Button> */}
                   </div>
                 )}
               </div>
