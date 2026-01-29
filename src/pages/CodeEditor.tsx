@@ -135,7 +135,9 @@ const CodeEditor = () => {
             {/* Left side */}
             <div className="flex items-center gap-4">
               {/* Filename */}
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2 border"> */}
+              <div className="flex items-center gap-1 sm:gap-2 w-fit shrink-0 px-1 sm:px-2">
+
                 <input
                   type="text"
                   value={filename}
