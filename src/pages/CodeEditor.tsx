@@ -14,6 +14,7 @@ import {
   ChevronDown,
   Play,
   Maximize2,
+  Menu,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -54,6 +55,9 @@ const CodeEditor = () => {
   const [isPublic, setIsPublic] = useState(true);
   const [copied, setCopied] = useState(false);
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showMobileLangMenu, setShowMobileLangMenu] = useState(false);
+  const [showMobileActionMenu, setShowMobileActionMenu] = useState(false);
   const { toast } = useToast();
 
   const currentLang = languages.find((l) => l.id === language) || languages[1];
@@ -61,13 +65,13 @@ const CodeEditor = () => {
   // Load code from URL params on mount
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const encodedCode = urlParams.get('code');
+    const encodedCode = urlParams.get("code");
     if (encodedCode) {
       try {
         const decodedCode = decodeURIComponent(escape(atob(encodedCode)));
         setCode(decodedCode);
       } catch (error) {
-        console.error('Failed to decode code from URL:', error);
+        console.error("Failed to decode code from URL:", error);
       }
     }
   }, []);
@@ -113,7 +117,7 @@ const CodeEditor = () => {
         description: "Share link copied to clipboard",
       });
     } catch (error) {
-      console.error('Failed to encode code for sharing:', error);
+      console.error("Failed to encode code for sharing:", error);
       toast({
         title: "Share Failed",
         description: "Unable to share code due to encoding error",
@@ -125,97 +129,162 @@ const CodeEditor = () => {
   return (
     <main className="pt-16 min-h-screen bg-background">
       {/* Toolbar */}
-      <div className="border-b border-border bg-card">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-14">
-            {/* Left side */}
-            <div className="flex items-center gap-4">
-              {/* Filename */}
-              <div className="flex items-center gap-2">
-                <input
-                  type="text"
-                  value={filename}
-                  onChange={(e) => setFilename(e.target.value)}
-                  placeholder="filename"
-                  className="bg-transparent font-mono text-foreground focus:outline-none border-b border-transparent focus:border-primary transition-colors"
-                />
-                <span className="text-muted-foreground font-mono">{currentLang.ext}</span>
-              </div>
+     <div className="border-b border-border bg-card">
+  <div className="container mx-auto px-4">
+    <div className="flex items-center justify-between h-14">
+      {/* Left side */}
+      <div className="flex items-center gap-4">
+        {/* Filename */}
+        <div className="flex items-center gap-2">
+          <input
+            type="text"
+            value={filename}
+            onChange={(e) => setFilename(e.target.value)}
+            placeholder="filename"
+            className="bg-transparent font-mono text-foreground focus:outline-none border-b border-transparent focus:border-primary transition-colors"
+          />
+          <span className="text-muted-foreground font-mono">
+            {currentLang.ext}
+          </span>
+        </div>
 
-              {/* Language selector */}
-              <div className="relative">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowLanguageMenu(!showLanguageMenu)}
-                  className="font-mono"
+        {/* Desktop Language selector */}
+        <div className="hidden md:block relative">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+            className="font-mono"
+          >
+            {currentLang.name}
+            <ChevronDown className="w-4 h-4 ml-1" />
+          </Button>
+          {showLanguageMenu && (
+            <div className="absolute top-full left-0 mt-1 w-48 p-2 rounded-lg glass border border-border shadow-card z-50 max-h-64 overflow-y-auto animate-scale-in">
+              {languages.map((lang) => (
+                <button
+                  key={lang.id}
+                  onClick={() => {
+                    setLanguage(lang.id);
+                    setShowLanguageMenu(false);
+                  }}
+                  className={`flex items-center justify-between w-full px-3 py-2 text-sm rounded-md transition-colors ${
+                    language === lang.id
+                      ? "bg-primary text-primary-foreground"
+                      : "text-foreground hover:bg-accent"
+                  }`}
                 >
-                  {currentLang.name}
-                  <ChevronDown className="w-4 h-4 ml-1" />
-                </Button>
-                {showLanguageMenu && (
-                  <div className="absolute top-full left-0 mt-1 w-48 p-2 rounded-lg glass border border-border shadow-card z-50 max-h-64 overflow-y-auto animate-scale-in">
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.id}
-                        onClick={() => {
-                          setLanguage(lang.id);
-                          setShowLanguageMenu(false);
-                        }}
-                        className={`flex items-center justify-between w-full px-3 py-2 text-sm rounded-md transition-colors ${
-                          language === lang.id
-                            ? "bg-primary text-primary-foreground"
-                            : "text-foreground hover:bg-accent"
-                        }`}
-                      >
-                        {lang.name}
-                        <span className="text-xs opacity-60">{lang.ext}</span>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+                  {lang.name}
+                  <span className="text-xs opacity-60">{lang.ext}</span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
 
+      {/* Right side */}
+      <div className="flex items-center gap-2">
+        {/* Desktop buttons */}
+        <div className="hidden md:flex items-center gap-2">
+          <Button variant="ghost" size="sm" onClick={handleCopy}>
+            {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+          </Button>
+          <Button variant="ghost" size="sm" onClick={handleDownload}>
+            <Download className="w-4 h-4" />
+          </Button>
+          <Button variant="ghost" size="sm" onClick={handleShare}>
+            <Share2 className="w-4 h-4" />
+          </Button>
+          <Button variant="hero" size="sm" onClick={handleSave}>
+            <Save className="w-4 h-4" />
+            Save
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsPublic(!isPublic)}
+            className="gap-2"
+          >
+            {isPublic ? <><Globe className="w-4 h-4 text-primary" /> Public</> : <><Lock className="w-4 h-4 text-muted-foreground" /> Private</>}
+          </Button>
+        </div>
+
+        {/* Mobile: Language dropdown */}
+        <div className="md:hidden relative">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setShowMobileLangMenu(!showMobileLangMenu)}
+          >
+            {currentLang.name}
+            <ChevronDown className="w-4 h-4 ml-1" />
+          </Button>
+          {showMobileLangMenu && (
+            <div className="absolute right-0 top-full mt-2 w-48 p-2 rounded-lg glass border border-border shadow-card z-50 animate-scale-in max-h-64 overflow-y-auto">
+              {languages.map((lang) => (
+                <button
+                  key={lang.id}
+                  onClick={() => {
+                    setLanguage(lang.id);
+                    setShowMobileLangMenu(false);
+                  }}
+                  className={`flex items-center justify-between w-full px-3 py-2 text-sm rounded-md transition-colors mb-1 ${
+                    language === lang.id
+                      ? "bg-primary text-primary-foreground"
+                      : "text-foreground hover:bg-accent"
+                  }`}
+                >
+                  {lang.name}
+                  <span className="text-xs opacity-60">{lang.ext}</span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Mobile: Action & Visibility dropdown */}
+        <div className="md:hidden relative">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setShowMobileActionMenu(!showMobileActionMenu)}
+          >
+            <Menu className="w-5 h-5" />
+          </Button>
+          {showMobileActionMenu && (
+            <div className="absolute right-0 top-full mt-2 w-56 p-2 rounded-lg glass border border-border shadow-card z-50 animate-scale-in">
               {/* Visibility toggle */}
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsPublic(!isPublic)}
-                className="gap-2"
+                className="flex w-full justify-between mb-2"
               >
-                {isPublic ? (
-                  <>
-                    <Globe className="w-4 h-4 text-primary" />
-                    Public
-                  </>
-                ) : (
-                  <>
-                    <Lock className="w-4 h-4 text-muted-foreground" />
-                    Private
-                  </>
-                )}
+                {isPublic ? <><Globe className="w-4 h-4 text-primary" /> Public</> : <><Lock className="w-4 h-4 text-muted-foreground" /> Private</>}
               </Button>
-            </div>
 
-            {/* Right side */}
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" size="sm" onClick={handleCopy}>
-                {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+              {/* Action buttons */}
+              <Button variant="ghost" size="sm" className="flex w-full justify-between mb-1" onClick={handleCopy}>
+                {copied ? <><Check className="w-4 h-4 text-green-500" /> Copy</> : <><Copy className="w-4 h-4" /> Copy</>}
               </Button>
-              <Button variant="ghost" size="sm" onClick={handleDownload}>
-                <Download className="w-4 h-4" />
+              <Button variant="ghost" size="sm" className="flex w-full justify-between mb-1" onClick={handleDownload}>
+                <Download className="w-4 h-4" /> Download
               </Button>
-              <Button variant="ghost" size="sm" onClick={handleShare}>
-                <Share2 className="w-4 h-4" />
+              <Button variant="ghost" size="sm" className="flex w-full justify-between mb-1" onClick={handleShare}>
+                <Share2 className="w-4 h-4" /> Share
               </Button>
-              <Button variant="hero" size="sm" onClick={handleSave}>
-                <Save className="w-4 h-4" />
-                Save
+              <Button variant="hero" size="sm" className="flex w-full justify-between" onClick={handleSave}>
+                <Save className="w-4 h-4" /> Save
               </Button>
             </div>
-          </div>
+          )}
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
 
       {/* Editor */}
       <div className="h-[calc(100vh-7.5rem)] px-6 pt-5 rounded-md pb-6">
@@ -241,7 +310,7 @@ const CodeEditor = () => {
             lineNumbersMinChars: 4,
             scrollBeyondLastLine: false,
             automaticLayout: true,
-            wordWrap: "on"
+            wordWrap: "on",
           }}
         />
       </div>

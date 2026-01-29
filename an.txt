@@ -1,0 +1,61 @@
+CodeEditor.tsx Features Explanation
+
+The CodeEditor.tsx file is a React component that implements a comprehensive code editor interface using the Monaco Editor (the same editor used in VS Code). Below is a detailed breakdown of its key features and functionalities:
+
+1. **Core Editor Functionality**
+   - Uses Monaco Editor for syntax highlighting, code completion, and advanced editing features
+   - Supports multiple programming languages including JavaScript, TypeScript, Python, Java, HTML, CSS, JSON, Markdown, SQL, Go, Rust, and C++
+   - Dark theme (vs-dark) for better readability
+   - Customizable editor options like font size (14px), font family (JetBrains Mono), minimap, smooth scrolling, and word wrapping
+
+2. **Language Selection**
+   - Dropdown menu for selecting programming languages
+   - Displays language name and file extension
+   - Updates syntax highlighting dynamically based on selected language
+   - Separate mobile and desktop implementations for responsive design
+
+3. **File Management**
+   - Editable filename input field
+   - Automatic file extension display based on selected language
+   - Download functionality that saves code as a file with appropriate extension
+
+4. **Code Sharing and Collaboration**
+   - Share feature that encodes code into URL parameters for easy sharing
+   - URL parameter loading on component mount to restore shared code
+   - Public/Private visibility toggle (UI only, no backend implementation shown)
+
+5. **User Interface Features**
+   - Responsive design with different layouts for desktop and mobile
+   - Toolbar with action buttons: Copy, Download, Share, Save
+   - Mobile-optimized dropdown menus for language selection and actions
+   - Glass morphism design elements with animations
+
+6. **Code Operations**
+   - Copy to clipboard functionality with visual feedback
+   - Download code as text file
+   - Save button (currently shows toast notification, no actual save implementation)
+   - Share link generation and clipboard copying
+
+7. **State Management**
+   - React hooks for managing code content, language, filename, and UI states
+   - Toast notifications for user feedback on actions
+   - Mobile menu state management for responsive interactions
+
+8. **Default Content**
+   - Pre-loaded with a sample TypeScript code demonstrating Fibonacci sequence calculation
+   - Welcome message and example code to guide users
+
+9. **Accessibility and UX**
+   - Keyboard navigation support
+   - Visual feedback for actions (copy success, etc.)
+   - Loading states and error handling for URL parameter decoding
+   - Consistent iconography using Lucide React icons
+
+10. **Technical Implementation**
+    - Built with React and TypeScript
+    - Uses custom UI components from a design system
+    - Integrates with toast notification system
+    - Handles URL encoding/decoding for code sharing
+    - Responsive CSS with Tailwind classes
+
+The component serves as a full-featured online code editor that could be part of a code sharing platform, allowing users to write, edit, and share code snippets across different programming languages with a modern, responsive interface.
