@@ -130,10 +130,10 @@ const CodeEditor = () => {
     <main className="pt-16 min-h-screen bg-background">
       {/* Toolbar */}
       <div className="border-b border-border bg-card">
-        <div className=" mx-auto pl-4 pr-8 border">
+        <div className=" mx-auto">
           <div className="flex items-center justify-between h-14">
             {/* Left side */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 ps-4">
               {/* Filename */}
               <div className="flex items-center gap-2">
                 <input
@@ -184,7 +184,7 @@ const CodeEditor = () => {
             </div>
 
             {/* Right side */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 me-8">
               {/* Desktop buttons */}
               <div className="hidden md:flex items-center gap-2">
                 <Button variant="ghost" size="sm" onClick={handleCopy}>
