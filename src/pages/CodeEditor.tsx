@@ -136,19 +136,21 @@ const CodeEditor = () => {
             <div className="flex items-center gap-4">
               {/* Filename */}
               {/* <div className="flex items-center gap-2 border"> */}
-              <div className="flex items-center gap-1 sm:gap-2 w-fit shrink-0 px-1 sm:px-2">
+             <div className="flex items-center gap-1 sm:gap-2 w-fit shrink-0 px-1 sm:px-2 ps-4">
+  <input
+    type="text"
+    value={filename}
+    onChange={(e) => setFilename(e.target.value)}
+    placeholder="filename"
+    className="bg-transparent font-mono text-foreground focus:outline-none 
+               border-b border-transparent focus:border-primary transition-colors
+               w-[180px] sm:w-[140px] md:w-auto"
+  />
+  <span className="text-muted-foreground font-mono shrink-0">
+    {currentLang.ext}
+  </span>
+</div>
 
-                <input
-                  type="text"
-                  value={filename}
-                  onChange={(e) => setFilename(e.target.value)}
-                  placeholder="filename"
-                  className="bg-transparent font-mono text-foreground focus:outline-none border-b border-transparent focus:border-primary transition-colors"
-                />
-                <span className="text-muted-foreground font-mono">
-                  {currentLang.ext}
-                </span>
-              </div>
 
               {/* Desktop Language selector */}
               <div className="hidden md:block relative">
@@ -186,7 +188,7 @@ const CodeEditor = () => {
             </div>
 
             {/* Right side */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 pe-5">
               {/* Desktop buttons */}
               <div className="hidden md:flex items-center gap-2">
                 <Button variant="ghost" size="sm" onClick={handleCopy}>
