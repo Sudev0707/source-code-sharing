@@ -130,7 +130,7 @@ const CodeEditor = () => {
     <main className="pt-16 min-h-screen bg-background">
       {/* Toolbar */}
       <div className="border-b border-border bg-card">
-        <div className="container mx-auto">
+        <div className=" mx-auto">
           <div className="flex items-center justify-between h-14">
             {/* Left side */}
             <div className="flex items-center gap-4">
@@ -335,7 +335,7 @@ const CodeEditor = () => {
       </div>
 
       {/* Editor */}
-      {/* <div className="h-[calc(100vh-7.5rem)] px-1 pt-5 rounded-md pb-4">
+      <div className="h-[calc(100vh-7.5rem)] px-1 pt-5 rounded-md pb-4">
         <Editor
           height="100%"
           language={language}
@@ -361,7 +361,7 @@ const CodeEditor = () => {
             wordWrap: "on",
           }}
         />
-      </div> */}
+      </div>
     </main>
   );
 };
